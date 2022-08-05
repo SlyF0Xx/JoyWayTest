@@ -17,9 +17,7 @@ UPickableItem::UPickableItem()
 	SetCollisionProfileName(TEXT("Pickup"));
 
 	SetCollisionResponseToAllChannels(ECollisionResponse::ECR_Block);
-	//SetCollisionResponseToChannel(UAC_Picker::s_collision_channel, ECollisionResponse::ECR_Overlap);
 	SetCollisionResponseToChannel(UAC_Picker::s_collision_channel, ECollisionResponse::ECR_Block);
-	SetCollisionResponseToChannel(ECollisionChannel::ECC_WorldStatic, ECollisionResponse::ECR_Block);
 }
 
 

@@ -63,59 +63,17 @@ bool UAC_Picker::does_all_pickable_items_gone()
 
 void UAC_Picker::OnPickableTimerInsideCollision()
 {
-	FVector location;
-	FRotator rotation;
-	GetOwner()->GetActorEyesViewPoint(location, rotation);
-
-	auto camera = GetOwner()->GetComponentByClass(UCameraComponent::StaticClass());
-
-	FCollisionResponseParams query;
-	query.CollisionResponse.SetAllChannels(ECollisionResponse::ECR_Ignore);
-	query.CollisionResponse.SetResponse(UPickableItem::s_collision_channel, ECollisionResponse::ECR_Block);
-
-
-	/*
-	FHitResult OutHit;
-	GetWorld()->LineTraceSingleByChannel(
-		OutHit,
-		static_cast<UCameraComponent*>(camera)->GetRelativeLocation() + location,
-		static_cast<UCameraComponent*>(camera)->GetRelativeLocation() + location + (UKismetMathLibrary::GetForwardVector(rotation) * GetScaledSphereRadius()),
-		s_collision_channel,
-		FCollisionQueryParams::DefaultQueryParam,
-		FCollisionResponseParams(query));
-
-	*/
-
 	FHitResult OutHit;
 
 	int32 SizeX;
 	int32 SizeY;
 	UGameplayStatics::GetPlayerController(GetWorld(), 0)->GetViewportSize(SizeX, SizeY);
-	//UGameplayStatics::GetPlayerController(GetWorld(), 0)->GetHitResultAtScreenPosition(FVector2D(SizeX / 2, SizeY / 2), {UEngineTypes::ConvertToObjectType(UPickableItem::s_collision_channel)}, false, OutHit);
 		
 	UGameplayStatics::GetPlayerController(GetWorld(), 0)->GetHitResultAtScreenPosition(
 		FVector2D(SizeX / 2, SizeY / 2),
-		//ECollisionChannel::ECC_Visibility,
-		
-		
-		
 		UPickableItem::s_collision_channel,
 		FCollisionQueryParams::DefaultQueryParam,
-
-
-
-		//{ EObjectTypeQuery::ObjectTypeQuery2 },
-		//false,
-		
-		//s_collision_channel,
 		OutHit);
-
-	//UGameplayStatics::GetPlayerController(GetWorld(), 0)->GetHitResultUnderCursorForObjects({ UEngineTypes::ConvertToObjectType(s_collision_channel) }, false, OutHit);
-	//UPickableItem::s_collision_channel
-
-	//UPickableItem::s_collision_channel, 
-	//GetHitResultUnderCursorForObjects
-	//GetHitResultUnderCursorByChannel
 
 	if (OutHit.bBlockingHit) {
 		if (auto pickable_item = Cast<UPickableItem>(OutHit.Component)) {
