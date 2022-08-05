@@ -30,3 +30,6 @@ Character also contains respawn logic.
 
 # Partitially implemented:
 I tried to create switching between levels via Seamless Travel feature. It works, but I stuck into a problem with camera and Axis Mapping and Continue work later
+
+# Controls:
+LMD to shoot, E to interact, 1 / 2 to switch between first and second weapons
