@@ -37,7 +37,9 @@ void UAC_ProjectileDamage::ApplyDamage_Implementation()
 
 			// spawn the projectile at the muzzle
 			auto projectile = World->SpawnActor<AJoyWayTestProjectile>(ProjectileClass, SpawnLocation, SpawnRotation, ActorSpawnParams);
-			projectile->set_damage(get_base_damage());
+			if (projectile) {
+				projectile->set_damage(get_base_damage());
+			}
 		}
 	}
 

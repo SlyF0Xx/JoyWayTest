@@ -14,7 +14,16 @@ class AJoyWayTestGameMode : public AGameModeBase
 public:
 	AJoyWayTestGameMode();
 
-	void GetSeamlessTravelActorList(bool bToTransition, TArray<AActor*>& ActorList) override;
+	void GetSeamlessTravelActorList(bool bToEntry, TArray<class AActor*>& ActorList) override;
+
+	/**
+	 * Called after a seamless level transition has been completed on the *new* GameMode.
+	 * Used to reinitialize players already in the game as they won't have *Login() called on them
+	 */
+	void PostSeamlessTravel() override;
+
+private:
+	ACharacter* m_character;
 };
 
 

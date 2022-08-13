@@ -8,14 +8,9 @@
 #include "Containers/Array.h"
 #include "GameFramework/Character.h"
 
-#include <iostream>
+#include "Kismet/GameplayStatics.h" 	 	
+#include "Camera/CameraActor.h"
+#include "GameFramework/GameStateBase.h"
+#include "GameFramework/PlayerState.h"
 
-void AJoyWayPlayerController::GetSeamlessTravelActorList(bool bToEntry, TArray<class AActor*>& ActorList)
-{
-	auto character = UGameplayStatics::GetPlayerCharacter(GetWorld(), 0);
-	ActorList.Add(character);
-
-	TArray<AActor*> actors;
-	character->GetAttachedActors(actors);
-	ActorList.Append(actors);
-}
+#include "../JoyWayTestCharacter.h"

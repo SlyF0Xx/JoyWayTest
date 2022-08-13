@@ -14,6 +14,4 @@ class JOYWAYTEST_API AJoyWayPlayerController : public APlayerController
 {
 public:
 	GENERATED_BODY()
-	
-	void GetSeamlessTravelActorList(bool bToEntry, TArray<class AActor*>& ActorList) override;
 };

@@ -4,6 +4,10 @@
 #include "AC_Teleport.h"
 #include "Kismet/GameplayStatics.h" 	
 #include "GameFramework/Character.h"
+
+#include "Engine/GameInstance.h" 	
+#include "Engine/Engine.h"
+
 #include "Engine/World.h" 	
 
 // Sets default values for this component's properties
@@ -28,15 +32,21 @@ void UAC_Teleport::BeginPlay()
 
 void UAC_Teleport::Teleport()
 {
-	//GetWorld()->ServerTravel(TEXT("/Game/FirstPersonCPP/Maps/FirstPersonExampleMap2"), true, false);
-	UGameplayStatics::GetPlayerController(GetWorld(), 0)->ClientTravel(TEXT("/Game/FirstPersonCPP/Maps/FirstPersonExampleMap2"), ETravelType::TRAVEL_Relative, true);
+	//FString error;
+	//auto engine = UGameplayStatics::GetGameInstance(this)->GetEngine();
+	//engine->Browse(*engine->GetWorldContextFromWorld(GetWorld()), TEXT("/Game/FirstPersonCPP/Maps/FirstPersonExampleMap2"), error);
 
-	auto character = UGameplayStatics::GetPlayerCharacter(GetWorld(), 0);
+	//GetWorld()->ServerTravel(TEXT("/Game/FirstPersonCPP/Maps/FirstPersonExampleMap2"), true, false);
+
+	//auto character = UGameplayStatics::GetPlayerCharacter(GetWorld(), 0);
+	UGameplayStatics::GetPlayerController(GetWorld(), 0)->ClientTravel(TEXT("/Game/FirstPersonCPP/Maps/FirstPersonExampleMap2"), ETravelType::TRAVEL_Relative, true);
+	//UGameplayStatics::GetPlayerController(GetWorld(), 0)->ClientTravel(TEXT("/Game/FirstPersonCPP/Maps/FirstPersonExampleMap2"), ETravelType::TRAVEL_Relative);
+
 	//UGameplayStatics::GetPlayerController(GetWorld(), 0)->UnPossess();
 	//UGameplayStatics::GetPlayerController(GetWorld(), 0)->Possess(character);
 
 
-	UGameplayStatics::GetPlayerController(GetWorld(), 0)->SetViewTarget(character);
+	//UGameplayStatics::GetPlayerController(GetWorld(), 0)->SetViewTarget(character);
 
 	//FirstPersonCameraComponent
 
