@@ -30,6 +30,7 @@ Character also contains respawn logic.
 
 # Teleport:
 Switch between levels implemented via Seamless Travelling. Teleport starts travelling, GameMode specifies, what classes should be moved, Unposes character to prevent force deletion, saves character in GameInstance and Posses character to the new Player Controller. Note that method, which specifies what actor should be saved and method, which finalise travelling are called from different GameModes (first is called from source map GameMode, second from destination map GameMode), so GameInstance is used to save data.
+
 I also tried to persist character via PlayerController, but finalisation of Player Controller is called before it creates new character and Posses to it
 Note, that only ClientTravel is allowed for PIE Seamless Travelling
 
